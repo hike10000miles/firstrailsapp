@@ -1,0 +1,8 @@
+<h1><%= @cuisine_types.name %> Restaurants</h1>
+
+<% @cuisine_types.restaurants.each do |restaurant| %>
+<p><%= restaurant.name %></p>
+<%= link_to 'Show', restaurant_path(restaurant) %><br>
+<% end %>
+
+<%= link_to 'Back to cuisine', cuisine_types_path %>

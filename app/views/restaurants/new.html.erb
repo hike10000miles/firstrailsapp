@@ -1,0 +1,33 @@
+<h1>Add new Restaurant</h1>
+
+<%= form_for :restaurant, url: restaurants_path do |f| %>
+	<p>
+		<%= f.label :name %><br>
+		<%= f.text_field :name %>
+	</p>
+
+	<p>
+		<%= f.label :address %><br>
+		<%= f.text_field :address %>
+	</p>
+
+	<p>
+		<%= f.label :capacity %><br>
+		<%= f.text_field :capacity %>
+	</p>
+
+	<p>
+		<%= f.select(:cuisine_type_id) do %>
+        	<% [['BBQ', 1], ['Thai', 2], ['Canadian', 3]].each do |c| -%>
+                <%= content_tag(:option, c.first, value: c.last) %>
+            <% end %>
+        <% end %>
+	</p>
+
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>
+
+<%= link_to 'Back to cuisine', cuisine_types_path %><br>
+<%= link_to 'Back to restaurant', restaurants_path %>

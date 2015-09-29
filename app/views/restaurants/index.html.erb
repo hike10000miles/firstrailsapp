@@ -1,0 +1,14 @@
+<h1>Browse restaurants</h1>
+
+<% @restaurants.each do |restaurant| %>
+  <p>Name: <%= restaurant.name %><br> 
+  Cuisine Type: <%= restaurant.cuisine_type.name %><br>
+  <%= link_to 'Show', restaurant_path(restaurant) %><br>
+  <%= link_to 'Edit', edit_restaurant_path(restaurant) %><br>
+  <%= link_to 'Destroy', restaurant_path(restaurant),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+  </p>
+<% end %>
+
+<%= link_to 'New', new_restaurant_path %>

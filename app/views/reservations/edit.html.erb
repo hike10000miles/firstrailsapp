@@ -1,4 +1,4 @@
-<h1>Add new Reservation</h1>
+<h1>Editing</h1>
 
   <% if @reservation.errors.any? %>
     <div id="error_explanation">
@@ -14,7 +14,7 @@
     </div>
   <% end %>
 
-<%= form_for :reservation, url: restaurant_reservations_path do |f| %>
+<%= form_for :reservation, url: restaurant_reservations_path(@restaurant.id, @reservation.id), html: {method: :patch} do |f| %>
 	<p>
 		<%= f.label :party_size %><br>
 		<%= f.text_field :party_size %>

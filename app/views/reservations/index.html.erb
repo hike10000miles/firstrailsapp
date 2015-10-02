@@ -5,6 +5,14 @@
 	Party Size: <%= reservation.party_size %>
 	Seating time: <%= reservation.seating_time %>
 	</p>
+	<%= link_to 'Show', restaurant_reservation_path(@restaurant.id ,reservation.id) %><br>
+	<%= link_to 'Edit', edit_restaurant_reservation_path(@restaurant.id ,reservation.id) %><br>
+	<%= link_to 'Destroy', restaurant_reservation_path(@restaurant.id ,reservation.id),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %><br>
 <% end %>
 
 <%= link_to 'New', new_restaurant_reservation_path %><br>
+<%= link_to 'Back to cuisine', cuisine_types_path %><br>
+<%= link_to 'Back to restaurant', restaurants_path %>
+

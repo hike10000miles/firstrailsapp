@@ -1,5 +1,7 @@
 class ReservationsController < ApplicationController
 
+	before_action :authenticate_user 
+
 	def index
 		@restaurant = Restaurant.find(params[:restaurant_id])
 		@reservations = @restaurant.reservations
@@ -23,8 +25,32 @@ class ReservationsController < ApplicationController
 
 	def show
 		@restaurant = Restaurant.find(params[:restaurant_id])
-		@reservations = @restaurant.reservations
+		@reservation = @restaurant.reservations.find(params[:id])
 	end
+
+	def edit
+		@restaurant = Restaurant.find(params[:restaurant_id])
+		@reservation = @restaurant.reservations.find(params[:id])
+	end
+
+	def update
+		@restaurant = Restaurant.find(params[:restaurant_id])
+		@reservation = @restaurant.reservations.find(params[:id])
+
+		if @reservation.update(reservation_params)
+			redirect_to @reservation
+		else
+			render 'edit'
+		end
+	end
+
+	def destroy
+		@restaurant = Restaurant.find(params[:restaurant_id])
+		@reservation = @restaurant.reservations.find(params[:id])
+		@reservation.destroy
+ 
+    	redirect_to @restaurant
+    end
 
 	private
 	def reservation_params

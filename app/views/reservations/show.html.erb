@@ -1,10 +1,7 @@
 <h1>Reservations for <%= @restaurant.name %></h1>
 
-<% @reservations.each do |reservation| %>
-	<p>
-	Party Size: <%= reservation.party_size %>
-	Seating time: <%= reservation.seating_time %>
-	</p>
-<% end %>
+<p>Party Size: <%= @reservation.party_size %></p>
+<p>Seating Time: <%= @reservation.seating_time %></p>
 
 <%= link_to 'New', new_restaurant_reservation_path %><br>
+<%= link_to 'Back to restaurant', restaurants_path %>

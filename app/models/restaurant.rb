@@ -3,7 +3,8 @@ class Restaurant < ActiveRecord::Base
 	belongs_to :cuisine_type
 	has_many :reservations
 
-	validates :name, :capacity, presence: true
+	validates :name, length: {in: 1..70}
+	validates :capacity, presence: true
 	validate :capacity_must_be_even_number
 
 	def capacity_must_be_even_number

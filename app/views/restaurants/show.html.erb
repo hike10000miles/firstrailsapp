@@ -4,7 +4,7 @@
 <p>Capacity: <%= @restaurant.capacity %></p>
 <p>Cuisine Type: <%= @restaurant.cuisine_type.name %></p>
 
-<%= link_to 'Reservation', restaurant_reservations_path(@restaurant.id) %>
+<%= link_to 'Reservation', restaurant_reservations_path(@restaurant.id) %><br>
 <%= link_to 'Edit', edit_restaurant_path %><br>
 <%= link_to 'Back to restaurant', restaurants_path %><br>
 <%= link_to 'Back to cuisine', cuisine_type_path %><br>

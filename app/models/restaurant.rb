@@ -1,7 +1,8 @@
 class Restaurant < ActiveRecord::Base
-	
+
 	belongs_to :cuisine_type
 	has_many :reservations
+	mount_uploader :image, ImageUploader
 
 	validates :name, length: {in: 1..70}
 	validates :capacity, presence: true

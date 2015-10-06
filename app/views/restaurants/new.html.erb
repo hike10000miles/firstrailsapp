@@ -31,6 +31,11 @@
 	</p>
 
 	<p>
+		<%= f.label :image %><br>
+		<%= f.file_field :image %>
+	</p>
+
+	<p>
 		<%= f.select(:cuisine_type_id) do %>
         	<% [['BBQ', 1], ['Thai', 2], ['Canadian', 3]].each do |c| -%>
                 <%= content_tag(:option, c.first, value: c.last) %>

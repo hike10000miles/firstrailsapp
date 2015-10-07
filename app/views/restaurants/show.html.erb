@@ -1,5 +1,13 @@
 <h1><%= @restaurant.name %> Detail</h1>
 
+<p>
+  <% if @restaurant.image? %>
+    <%= image_tag @restaurant.image.full.url %>
+  <% else %>
+    <%= image_tag "http://placehold.it/200x200", class: "img-thumbnail" %>
+  <% end %>
+</p>
+
 <%= @restaurant.image %>
 <p>Address: <%= @restaurant.address %></p>
 <p>Capacity: <%= @restaurant.capacity %></p>

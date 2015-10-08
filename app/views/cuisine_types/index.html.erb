@@ -1,9 +1,16 @@
-
-<h1>Browse cuisines</h1>
-
-<% @cuisine_types.each do |cuisine_type| %>
-  <p><%= cuisine_type.name %></p>
-  <%= link_to 'Show', cuisine_type_path(cuisine_type) %><br>
+<%if @current_user != nil %>
+  <%= @current_user.email %>
 <% end %>
 
-<%= link_to 'Add New Restaurant', new_restaurant_path %>
+<div id="ctIndex">
+	<h1>Browse cuisines</h1>
+
+	<% @cuisine_types.each do |cuisine_type| %>
+	  <p><%= cuisine_type.name %></p>
+	  <button type="button" class="btn btn-primary"><%= link_to 'Show All', cuisine_type_path(cuisine_type) %></button>
+	<% end %>
+	
+	<div id="ctAdd">
+		<button type="button" class="btn btn-info"><%= link_to 'Add New Restaurant', new_restaurant_path %></button>
+	</div>
+</div>

@@ -1,0 +1,6 @@
+<h1>Reservations for <%= @current_user.email %></h1>
+
+<p>Party Size: <%= @reservation.party_size %></p>
+<p>Seating Time: <%= @reservation.seating_time %></p>
+
+<%= link_to 'Back to reservation', users_path %>

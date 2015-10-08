@@ -14,7 +14,7 @@
     </div>
   <% end %>
 
-<%= form_for :restaurant, url: restaurants_path do |f| %>
+<%= form_for [@restaurant] do |f| %>
 	<p>
 		<%= f.label :name %><br>
 		<%= f.text_field :name %>

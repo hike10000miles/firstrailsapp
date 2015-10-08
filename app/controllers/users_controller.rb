@@ -1,6 +1,16 @@
 class UsersController < ApplicationController
 
 	# show sig up form
+	def index
+		@current_user = User.find_by_id(session[:user_id])
+		@reservations = @current_user.reservations
+	end
+
+	def show
+		@current_user = User.find_by_id(session[:user_id])
+		@reservations = @current_user.reservations
+	end
+
 	def new
 		@user = User.new
 	end

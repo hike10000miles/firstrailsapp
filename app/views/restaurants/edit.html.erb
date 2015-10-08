@@ -14,7 +14,7 @@
     </div>
   <% end %>
   
-<%= form_for :restaurant, url: restaurant_path(@restaurant), method: :patch do |f|%>
+<%= form_for [@restaurant], method: :patch do |f|%>
 
 	<p>
 		<%= f.label :name %><br>

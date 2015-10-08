@@ -3,8 +3,9 @@ class ReservationsController < ApplicationController
 	before_action :authenticate_user 
 
 	def index
+		@current_user = User.find_by_id(session[:user_id])
 		@restaurant = Restaurant.find(params[:restaurant_id])
-		@reservations = @restaurant.reservations
+		@reservations = @restaurant.reservations.where(user_id: session[:user_id])
 	end
 
 	def new
@@ -13,9 +14,11 @@ class ReservationsController < ApplicationController
 	end
 
 	def create
+		@current_user = User.find_by_id(session[:user_id])
 		@restaurant = Restaurant.find(params[:restaurant_id])
 		@reservation = Reservation.new(reservation_params)
 		@reservation.restaurant = @restaurant
+		@reservation.user = @current_user
 		if  @reservation.save
 			redirect_to [@restaurant, @reservation]
 		else
@@ -38,7 +41,7 @@ class ReservationsController < ApplicationController
 		@reservation = @restaurant.reservations.find(params[:id])
 
 		if @reservation.update(reservation_params)
-			redirect_to @reservation
+			redirect_to @restaurant
 		else
 			render 'edit'
 		end

@@ -1,4 +1,4 @@
-<h1>Reservations for <%= @restaurant.name %></h1>
+<h1>Reservations for <%= @restaurant.name %> under <%= @current_user.email %></h1>
 
 <% @reservations.each do |reservation| %>
 	<p>

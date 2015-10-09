@@ -1,5 +1,7 @@
 class UserReservationsController < ApplicationController
 
+	before_action :authenticate_user 
+
 	def show
 		@current_user = User.find_by_id(session[:user_id])
 		@reservation = @current_user.reservations.find(params[:id])

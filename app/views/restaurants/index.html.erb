@@ -1,14 +1,46 @@
 <h1>Browse restaurants</h1>
 
+<div class="row" id="restaurant_list">
 <% @restaurants.each do |restaurant| %>
-  <p>Name: <%= restaurant.name %><br> 
-  Cuisine Type: <%= restaurant.cuisine_type.name %><br>
-  <%= link_to 'Show', restaurant_path(restaurant) %><br>
-  <%= link_to 'Edit', edit_restaurant_path(restaurant) %><br>
-  <%= link_to 'Destroy', restaurant_path(restaurant),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>
-  </p>
-<% end %>
+	<div class="col-md-4">
+	  <p>
+	  Name: <%= restaurant.name %>
+	  </p>
 
-<%= link_to 'New', new_restaurant_path %>
+	  <p>
+		<% if restaurant.image? %>
+		<%= image_tag restaurant.image.thumb.url %>
+		<% else %>
+		<%= image_tag "http://placehold.it/50x50", class: "img-thumbnail" %>
+		<% end %>
+	  </p>
+
+	  <p>
+	  Cuisine Type: <%= restaurant.cuisine_type.name %>
+	  </p>
+
+	  <button type="button" class="btn btn-primary">
+	  <%= link_to 'Show', restaurant_path(restaurant) %>
+	  </button>
+
+	  <button type="button" class="btn btn-primary">
+	  <%= link_to 'Edit', edit_restaurant_path(restaurant) %>
+	  </button>
+
+	  <button type="button" class="btn btn-info">
+	  <%= link_to 'Destroy', restaurant_path(restaurant),
+	              method: :delete,
+	              data: { confirm: 'Are you sure?' } %>
+	  </button>
+
+	</div>
+<% end %>
+</div>
+<div class="links">
+	<button type="button" class="btn btn-info">
+		<%= link_to 'New', new_restaurant_path %>
+	</button>
+	<button type="button" class="btn btn-info">
+		<%= link_to 'Back to cuisine', cuisine_types_path %>
+	</button>
+</div>

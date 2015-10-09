@@ -58,19 +58,27 @@ body {
 		color: white;
 		text-decoration: none;
 	}
-	#ctrLink {
-		margin-top: 1rem;
-	}
 	.col-md-4 {
 		float: left;
 		text-align: center;
 	}
 	#ctrLink {
 		clear: both;
-		padding-top: 30px;
+		padding-top: 2rem;
 	}
 }
-
+#restaurant_details {
+	font-weight: bold;
+	font-size: 1.5rem;
+}
+#restaurant_links {
+	padding-top: 20px;
+	clear: both;
+	a {
+		color: white;
+		text-decoration: none;
+	}
+}
 
 
 
@@ -96,4 +104,47 @@ body {
 	a:hover {
 		color: blue;
 	}
+}
+#error_explanation_restaurant_reservation {
+	background-color: red;
+	border-radius: 10px;
+	ul {
+		list-style: none;
+	}
+}
+#restaurant_form {
+	label {
+		display: block;
+	}
+	text-align: center;
+	a {
+		color: white;
+		text-decoration: none;
+	}
+	#restaurant_image {
+		display: inline;
+	}
+}
+.links {
+	a {
+		color: white;
+		text-decoration: none;
+	}
+}
+.left {
+	float: left;
+}
+
+#restaurant_list {
+	a {
+		color: white;
+		text-decoration: none;
+	}
+}
+.col-md-4 {
+	margin-top: 20px;
+	float: left;
+}
+.links {
+	padding-top: 2rem;
 }

@@ -1,0 +1,38 @@
+<% if @userfriendship.errors.any? %>
+<div id="error_explanation">
+  <h2>
+    <%= pluralize(@userfriendship.errors.count, "error") %> prohibited
+    this friend been added to your friends list:
+  </h2>
+  <ul>
+    <% @userfriendship.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<h1>All users.</h1>
+<% @users.each do |user| %>
+	<p>
+		Email: <%= user.email %>
+	</p>
+	<p>
+		ID: <%= user.id %>
+	</p>
+<% end %>
+
+<%= form_for [@userfriendship] do |f| %>
+	<p>
+		<%= f.label :user_id %><br>
+		<%= f.text_field :user_id %>
+	</p>
+	<p>
+		<%= f.label :friend_id %><br>
+		<%= f.text_field :friend_id %>
+	</p>
+
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>

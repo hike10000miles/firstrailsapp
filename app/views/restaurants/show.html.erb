@@ -1,19 +1,43 @@
 <h1><%= @restaurant.name %> Detail</h1>
 
-<p>
-  <% if @restaurant.image? %>
-    <%= image_tag @restaurant.image.full.url %>
-  <% else %>
-    <%= image_tag "http://placehold.it/200x200", class: "img-thumbnail" %>
+<% if @current_user.reservations.where(restaurant_id: params[:id]).length > 0 %>
+  <p>You have made reservations at this restaurant before. Tell your friends about your experience!</p>
+<% else %>
+  <p>You have not made any reservations at this restaurant before. Try it out, may be you will like it.</p>
   <% end %>
-</p>
-
-<%= @restaurant.image %>
-<p>Address: <%= @restaurant.address %></p>
-<p>Capacity: <%= @restaurant.capacity %></p>
-<p>Cuisine Type: <%= @restaurant.cuisine_type.name %></p>
-
-<%= link_to 'Reservation', restaurant_reservations_path(@restaurant.id) %><br>
-<%= link_to 'Edit', edit_restaurant_path %><br>
-<%= link_to 'Back to restaurant', restaurants_path %><br>
-<%= link_to 'Back to cuisine', cuisine_type_path(@restaurant.cuisine_type_id) %><br>
+<div class="row" id="restaurant_show">
+	<div class="col-md-6" id="restaurant_pic">
+		<p>
+		  <% if @restaurant.image? %>
+		    <%= image_tag @restaurant.image.full.url %>
+		  <% else %>
+		    <%= image_tag "http://placehold.it/200x200", class: "img-thumbnail" %>
+		  <% end %>
+		</p>
+	</div>
+	<div class="col-md-6" id="restaurant_details">
+		<p>
+			Address: <%= @restaurant.address %>
+		</p>
+		<p>
+			Capacity: <%= @restaurant.capacity %>
+		</p>
+		<p>
+			Cuisine Type: <%= @restaurant.cuisine_type.name %>
+		</p>
+	</div>
+	<div id="restaurant_links">
+		<button type="button" class="btn btn-primary">
+		<%= link_to 'Reservation', restaurant_reservations_path(@restaurant.id) %>
+		</button>
+		<button type="button" class="btn btn-primary">
+		<%= link_to 'Edit', edit_restaurant_path %>
+		</button>
+		<button type="button" class="btn btn-info">
+		<%= link_to 'Back to restaurant', restaurants_path %>
+		</button>
+		<button type="button" class="btn btn-info">
+		<%= link_to 'Back to cuisine', cuisine_type_path(@restaurant.cuisine_type_id) %>
+		</button>
+	</div>
+</div>

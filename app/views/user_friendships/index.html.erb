@@ -1,0 +1,8 @@
+<h1>Your friends list</h1>
+
+<% @current_user_friends.each do |friend| %>
+	<p>
+		Email: <%= friend.email %>
+	</p>
+
+<% end %>

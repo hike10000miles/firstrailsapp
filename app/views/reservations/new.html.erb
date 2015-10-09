@@ -14,18 +14,18 @@
     </div>
   <% end %>
 
-<%= form_for :reservation, url: restaurant_reservations_path do |f| %>
-	<p>
-		<%= f.label :party_size %><br>
-		<%= f.text_field :party_size %>
-	</p>
+<%= form_for [@restaurant, @reservation] do |f| %>
+  <p>
+    <%= f.label :party_size %><br>
+    <%= f.text_field :party_size %>
+  </p>
 
-	<p>
-		<%= f.label :seating_time %><br>
-		<%= f.datetime_select :seating_time %>
-	</p>
+  <p>
+    <%= f.label :seating_time %><br>
+    <%= f.datetime_select :seating_time %>
+  </p>
 
-	<p>
-		<%= f.submit %>
-	</p>
+  <p>
+    <%= f.submit %>
+  </p>
 <% end %>

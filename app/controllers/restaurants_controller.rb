@@ -8,6 +8,7 @@ class RestaurantsController < ApplicationController
 
 	def show
 		@restaurant = Restaurant.find(params[:id])
+		@current_user = User.find_by_id(session[:user_id])
 	end
 
 	def new

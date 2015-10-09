@@ -4,12 +4,14 @@
 
 <div id="ctIndex">
 	<h1>Browse cuisines</h1>
-
+	<div class="row">
 	<% @cuisine_types.each do |cuisine_type| %>
+	  <div class="col-md-2">
 	  <p><%= cuisine_type.name %></p>
 	  <button type="button" class="btn btn-primary"><%= link_to 'Show All', cuisine_type_path(cuisine_type) %></button>
+	  </div>
 	<% end %>
-	
+	</div>
 	<div id="ctAdd">
 		<button type="button" class="btn btn-info"><%= link_to 'Add New Restaurant', new_restaurant_path %></button>
 	</div>

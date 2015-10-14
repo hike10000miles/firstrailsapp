@@ -1,16 +1,42 @@
 <h1>Welcome <%= current_user.email %></h1>
 
-<% @reservations.each do |reservation| %>
-	<p>
-	Party Size: <%= reservation.party_size %>
-	Seating time: <%= reservation.seating_time %>
-	</p>
-	<%= link_to 'Show', user_reservation_path(@current_user.id ,reservation.id) %><br>
-	<%= link_to 'Edit', edit_user_reservation_path(@current_user.id ,reservation.id) %><br>
-	<%= link_to 'Destroy', user_reservation_path(@current_user.id ,reservation.id),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %><br>
-<% end %>
+<div id="reservation_list">
+	<div class="row background">
+		<% @reservations.each do |reservation| %>
+			<div class="col-md-4 single_reservation">
+				<p>
+				Restaurant name: <%= reservation.restaurant.name %>
+				</p>
+				<p>
+				Party Size: <%= reservation.party_size %>
+				</p>
+				<p>
+				Seating time: <%= reservation.seating_time %>
+				</p>
+		  			<button type="button" class="btn btn-primary">
+						<%= link_to 'Show', user_reservation_path(@current_user.id ,reservation.id) %>
+					</button>
+		  			<button type="button" class="btn btn-primary">
+						<%= link_to 'Edit', edit_user_reservation_path(@current_user.id ,reservation.id) %>
+					</button>
+		  			<button type="button" class="btn btn-primary">
+						<%= link_to 'Destroy', user_reservation_path(@current_user.id ,reservation.id),
+			              method: :delete,
+			              data: { confirm: 'Are you sure?' } %>
+					</button>
+			</div>
+		<% end %>
+	</div>
+</div>
 
-<%= link_to 'Back to restaurant', restaurants_path %><br>
-<%= link_to 'Back to cuisine', cuisine_types_path %><br>
+<div class="links">
+	<button type="button" class="btn btn-info">
+		<%= link_to 'Back to restaurant', restaurants_path %>
+	</button>
+	<button type="button" class="btn btn-info">
+		<%= link_to 'Back to cuisine', cuisine_types_path %>
+	</button>
+	<button type="button" class="btn btn-info">
+		<%= link_to 'Friends', user_friendships_path %>
+	</button>
+</div>

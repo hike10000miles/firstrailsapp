@@ -6,7 +6,8 @@ class CuisineTypesController < ApplicationController
 	end
 
 	def show
-		@cuisine_types = CuisineType.find(params[:id])
+		@current_user = User.find_by_id(session[:user_id])
+		@cuisine_type = CuisineType.find(params[:id])
 	end
 
 end

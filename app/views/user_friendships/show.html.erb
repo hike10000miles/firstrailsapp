@@ -1,1 +1,21 @@
-show.html.erb
+<h1><%= @friend.email %>'s profile</h1>
+
+<div class="background" id="single_profile">
+	<% unless @friend.restaurants.length == 0 %>
+	<p>This user has recently made reservations at:</p>
+	<ul>
+	  <% @friend.restaurants.each do |restaurant| %>
+	    <li><%= restaurant.name %></li>
+	  <% end %>
+	</ul>
+	<% end %>
+
+	<% if @current_user_friendships.where(user_id: @current_user.id).length == 0 %>
+	  <p>Do you want to add this user to your friend list?</p>
+		<%= form_for [@user_friendship] do |f| %>
+	    <%= f.hidden_field :user_id, :value => @current_user.id %>
+	    <%= f.hidden_field :friend_id, :value => @friend.id %>
+	    <%= f.submit %>
+	  <% end %>
+	<% end %>
+</div>

@@ -1,4 +1,4 @@
-<h1>Add new Reservation</h1>
+<h1>Make new Reservation</h1>
 
   <% if @reservation.errors.any? %>
     <div id="error_explanation">
@@ -29,3 +29,12 @@
     <%= f.submit %>
   </p>
 <% end %>
+
+<div class="links">
+    <button type="button" class="btn btn-primary">
+    <%= link_to 'Back to restaurant', restaurants_path %>
+    </button>
+    <button type="button" class="btn btn-primary">
+    <%= link_to 'Back to Reservation', restaurant_reservations_path(@restaurant.id) %>
+    </button>
+</div>

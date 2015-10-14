@@ -29,3 +29,12 @@
 		<%= f.submit %>
 	</p>
 <% end %>
+
+<div class="links">
+  <button type="button" class="btn btn-primary">
+  <%= link_to 'Back to restaurant', restaurants_path %>
+  </button>
+  <button type="button" class="btn btn-primary">
+  <%= link_to 'Back to Reservation', restaurant_reservations_path(@restaurant.id) %>
+  </button>
+</div>

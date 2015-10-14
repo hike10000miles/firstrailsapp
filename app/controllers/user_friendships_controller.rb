@@ -8,19 +8,21 @@ class UserFriendshipsController < ApplicationController
 		@current_user_friends = @current_user.friends
 	end
 
-	def new
-		@users = User.all
-		@userfriendship = UserFriendship.new
+	def show
+		@friend = User.find(params[:id])
+		@current_user_friendships = UserFriendship.where(friend_id: @friend.id)
+		@current_user = User.find(session[:user_id])
+		@user_friendship = UserFriendship.new
 	end
 
 	def create
 		@user = User.find_by_id(session[:user_id])
-		@userfriendship = UserFriendship.create(user_friendship_params)
+		@userfriendship = UserFriendship.new(user_friendship_params)
 
 		if  @userfriendship.save
-			redirect_to @userfriendship
+			redirect_to @user
 		else
-			render 'new'
+			render 'show'
 		end
 	end
 
@@ -28,7 +30,7 @@ class UserFriendshipsController < ApplicationController
 	end
 
 	private
-		def user_friendship_params
-			params.require(:userfriendship).permit(:user_id, :friend_id)
-		end
+	def user_friendship_params
+		params.require(:user_friendship).permit(:user_id, :friend_id)
+	end
 end

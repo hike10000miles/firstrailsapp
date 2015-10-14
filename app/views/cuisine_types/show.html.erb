@@ -1,10 +1,10 @@
 <div id="ctShow">
 
-	<h1><%= @cuisine_types.name %> Restaurants</h1>
+	<h1><%= @cuisine_type.name %> Restaurants</h1>
 
-	<div id="ctrList">
+	<div class="row background" id="ctrList">
 
-		<% @cuisine_types.restaurants.each do |restaurant| %>
+		<% @cuisine_type.restaurants.each do |restaurant| %>
 		<div class="col-md-4">
 			<p>
 			  <% if restaurant.image? %>

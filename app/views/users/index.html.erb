@@ -1,17 +1,16 @@
-<h1>Welcome <%= current_user.email %></h1>
+<h1>All the users</h1>
 
-<% @reservations.each do |reservation| %>
-	<p>
-	Party Size: <%= reservation.party_size %>
-	Seating time: <%= reservation.seating_time %>
-	</p>
-	<%= link_to 'Show', user_reservation_path(@current_user.id ,reservation.id) %><br>
-	<%= link_to 'Edit', edit_user_reservation_path(@current_user.id ,reservation.id) %><br>
-	<%= link_to 'Destroy', user_reservation_path(@current_user.id ,reservation.id),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %><br>
+<div class="row background" id="user_list">
+<% @users.each do |user| %>
+  	<% if user.id != @current_user.id %>
+	<div class="col-md-4" id="single_user">
+		<p>
+			Email: <%= user.email %>
+		</p>
+		<button type="button" class="btn btn-primary">
+			<%= link_to "Look at profile", user_friendship_path(user.id) %>
+		</button>
+  	  </div>	
+  	<% end %>
 <% end %>
-
-<%= link_to 'Back to restaurant', restaurants_path %><br>
-<%= link_to 'Back to cuisine', cuisine_types_path %><br>
-<%= link_to 'Friends', user_friendships_path %><br>
+</div>

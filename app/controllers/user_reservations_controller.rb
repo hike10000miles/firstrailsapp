@@ -5,6 +5,7 @@ class UserReservationsController < ApplicationController
 	def show
 		@current_user = User.find_by_id(session[:user_id])
 		@reservation = @current_user.reservations.find(params[:id])
+		@restaurant = @reservation.restaurant
 	end
 
 	def edit

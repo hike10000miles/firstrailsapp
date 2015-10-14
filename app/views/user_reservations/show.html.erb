@@ -1,6 +1,16 @@
 <h1>Reservations for <%= @current_user.email %></h1>
 
-<p>Party Size: <%= @reservation.party_size %></p>
-<p>Seating Time: <%= @reservation.seating_time %></p>
+<div class="background" id="show_reservation">
+	<p>Restaurant name: <%= @restaurant.name %></p>
+	<p>Party Size: <%= @reservation.party_size %></p>
+	<p>Seating Time: <%= @reservation.seating_time %></p>
+</div>
 
-<%= link_to 'Back to reservation', users_path %>
+<div class="links">
+    <button type="button" class="btn btn-primary">
+		<%= link_to 'Edit', edit_restaurant_reservation_path(@restaurant.id ,@reservation.id) %>
+	</button>
+	<button type="button" class="btn btn-info">
+		<%= link_to 'Back to reservation', users_path %>
+	</button>
+</div>

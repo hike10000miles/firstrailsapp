@@ -2,13 +2,13 @@
   <%= @current_user.email %>
 <% end %>
 
-<div id="ctIndex">
+<div class="background" id="ctIndex">
 	<h1>Browse cuisines</h1>
 	<div class="row">
 	<% @cuisine_types.each do |cuisine_type| %>
-	  <div class="col-md-2">
+	  <div class="col-md-2" id="single_cuisine">
 	  <p><%= cuisine_type.name %></p>
-	  <button type="button" class="btn btn-primary"><%= link_to 'Show All', cuisine_type_path(cuisine_type) %></button>
+	  <button type="button" class="btn btn-primary"><%= link_to 'Show All', cuisine_type_path(cuisine_type.id) %></button>
 	  </div>
 	<% end %>
 	</div>

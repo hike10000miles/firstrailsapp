@@ -9,11 +9,28 @@
 <body>
 	<p class="navbar">
 		<% if current_user %>
-			<%= link_to "user", users_path %>
+		  <button type="button" class="btn btn-info">
+			<%= link_to "Main page", cuisine_types_path %>
+		  </button>
+		  <button type="button" class="btn btn-info">
+			<%= link_to "All restaurants", restaurants_path %>
+		  </button>
+		  <button type="button" class="btn btn-info">
+			<%= link_to "My profile", user_path(@current_user.id) %>
+		  </button>
+		  <button type="button" class="btn btn-info">
+			<%= link_to "All users", users_path %>
+		  </button>
+		  <button type="button" class="btn btn-info">
 			<%= link_to "Logout", logout_path, method: :delete %>
+		  </button>
 		<% else %>
+		  <button type="button" class="btn btn-info">
 			<%= link_to "Sign up", new_user_path %>
+		  </button>
+		  <button type="button" class="btn btn-info">
 			<%= link_to "Login", login_path %>
+		  </button>
 		<% end %>
 	</p>
 <%= yield %>

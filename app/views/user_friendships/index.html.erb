@@ -1,8 +1,25 @@
 <h1>Your friends list</h1>
 
+<div class="row" id="friend_list">
 <% @current_user_friends.each do |friend| %>
-	<p>
-		Email: <%= friend.email %>
-	</p>
-
+	<div class="col-md-6" id="single_friend">
+		<p>
+			Email: <%= friend.email %>
+		</p>
+		<% if friend.restaurants.length > 1 %>
+		<p>
+			Your friend has resently made reservation at:
+		</p>
+			<% friend.restaurants.each do |restaurant| %>
+			<p>
+				<%= restaurant.name %>
+			</p>
+			<% end %>
+		<% else %>
+		<p>
+			Your friend has not made any reservations yet.
+		</p>
+		<% end %>
+	</div>
 <% end %>
+</div>

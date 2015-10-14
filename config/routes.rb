@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   resources :users do
     resources :reservations, only: [:show, :edit, :update, :destroy], controller: 'user_reservations'
   end
-  resources :user_friendships
-  
+  resources :user_friendships, only: [:create, :index, :show, :destroy]
+
   get '/login' => 'sessions#new', as: :login
   post '/login' => 'sessions#create', as: :post_login
   delete '/logout' => 'sessions#destroy', as: :logout

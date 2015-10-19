@@ -5,6 +5,11 @@ Rails.application.routes.draw do
     resources :reservations, only: [:show, :edit, :update, :destroy], controller: 'user_reservations'
   end
   resources :user_friendships, only: [:create, :index, :show, :destroy]
+  
+  get '/user_friendships/:user_friendship_id/sent' => 'messages#index', as: :messages_sent, controller: 'messages'
+  get '/user_friendships/:user_friendship_id/inbox' => 'messages#inbox', as: :messages_inbox, controller: 'messages'
+  get '/user_friendships/:user_friendship_id/message/new' => 'messages#new', as: :messages_new, controller: 'messages'
+  post '/user_friendships/:user_friendship_id/messgae' => 'messages#create', as: :messages, controller: 'messages'
 
   get '/login' => 'sessions#new', as: :login
   post '/login' => 'sessions#create', as: :post_login

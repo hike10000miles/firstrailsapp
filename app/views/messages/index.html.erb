@@ -1,0 +1,5 @@
+<% @sent_messages.each do |message| %>
+  <p>From: <%= message.user.email %></p>
+  <p>Title: <%= message.title %></p>
+  <p>Content: <%= message.content %></p>
+<% end %>

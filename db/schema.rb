@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151014203643) do
+ActiveRecord::Schema.define(version: 20151015151348) do
 
   create_table "cuisine_types", force: :cascade do |t|
     t.string   "name"
@@ -24,7 +24,16 @@ ActiveRecord::Schema.define(version: 20151014203643) do
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
+
+  create_table "messages_user_friendships", id: false, force: :cascade do |t|
+    t.integer "message_id",         null: false
+    t.integer "user_friendship_id", null: false
+  end
+
+  add_index "messages_user_friendships", ["message_id"], name: "index_messages_user_friendships_on_message_id"
+  add_index "messages_user_friendships", ["user_friendship_id"], name: "index_messages_user_friendships_on_user_friendship_id"
 
   create_table "reservations", force: :cascade do |t|
     t.datetime "seating_time"

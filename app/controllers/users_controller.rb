@@ -9,6 +9,9 @@ class UsersController < ApplicationController
 	def show
 		@current_user = User.find_by_id(session[:user_id])
 		@reservations = @current_user.reservations
+		@messages = Message.all
+		@user_friendships = UserFriendship.where(friend_id: @current_user.id)
+		@count = 0
 	end
 
 	def new

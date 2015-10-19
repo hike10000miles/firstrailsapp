@@ -1,6 +1,20 @@
 <h1>Welcome <%= current_user.email %></h1>
 
-<div id="reservation_list">
+
+<% @user_friendships.each do |friendship| %>
+  <% @count += friendship.messages.length %>
+  <% friendship.messages.each do |message| %>
+    <% if @count > 0 %>
+      <p>You have message from <%= message.user.email %></p>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if @count > 0 %>
+  <p>You have <%= @count %> messages in total.</p>
+<% end %>
+
+  <div id="reservation_list">
 	<div class="row background">
 		<% @reservations.each do |reservation| %>
 			<div class="col-md-4 single_reservation">

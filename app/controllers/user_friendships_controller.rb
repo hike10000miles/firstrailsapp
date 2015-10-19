@@ -4,7 +4,7 @@ class UserFriendshipsController < ApplicationController
 
 	def index
 		@current_user = User.find(session[:user_id])
-		@current_user_friendships = UserFriendship.where(user_id: session[:user_id])
+		@user_friendships = UserFriendship.all
 		@current_user_friends = @current_user.friends
 	end
 
@@ -16,10 +16,14 @@ class UserFriendshipsController < ApplicationController
 	end
 
 	def create
+		@current_user = User.find(session[:user_id])
 		@user = User.find_by_id(session[:user_id])
 		@userfriendship = UserFriendship.new(user_friendship_params)
+		@message = Message.new(user_id: @current_user.id, title: "I just add you as friend!", content: "Let's go for some food!")
 
 		if  @userfriendship.save
+			@message.save
+			@userfriendship.messages << @message
 			redirect_to @user
 		else
 			render 'show'

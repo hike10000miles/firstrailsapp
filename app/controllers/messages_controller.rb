@@ -9,7 +9,6 @@ class MessagesController < ApplicationController
 	def inbox
 		@current_user = User.find_by_id(session[:user_id])
 		@conter_friendships = UserFriendship.where(friend_id: @current_user.id)
-		@user_friendship = UserFriendship.find(params[:user_friendship_id])
 	end
 
 	def new

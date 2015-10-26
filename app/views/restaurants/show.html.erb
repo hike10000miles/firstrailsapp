@@ -26,9 +26,19 @@
 			Cuisine Type: <%= @restaurant.cuisine_type.name %>
 		</p>
 	</div>
+
+	<div id="user_comment">
+		<h2>Comments:</h2>
+		<div id="com">
+			<%= render @restaurant.comments %>
+		</div>
+		<h2 id="new_comment"><%= link_to 'comment', new_restaurant_comment_path(@restaurant.id), remote: true %></h2>
+		<p id="creat_comment"></p>
+	</div>
+
 	<div id="restaurant_links">
 		<button type="button" class="btn btn-primary">
-		<%= link_to 'Reservation', restaurant_reservations_path(@restaurant.id) %>
+		<%= link_to 'Reservation', restaurant_reservations_path(@restaurant.id), :class => 'showReservations' %>
 		</button>
 		<button type="button" class="btn btn-primary">
 		<%= link_to 'Edit', edit_restaurant_path %>
@@ -40,4 +50,26 @@
 		<%= link_to 'Back to cuisine', cuisine_type_path(@restaurant.cuisine_type_id) %>
 		</button>
 	</div>
+	<div id="reservations"></div>
 </div>
+
+<script>	 	
+	 $(document).ready(function() {
+	 	var reservationsURL = $(".showReservations").attr('href');
+	 	var format = {format: 'json'};
+	 	function displayReservations (data) {
+	 		var reservationHTML = '<ul class="list">';
+    		var i = 0;
+    		for(i; i<data.length; i++) {
+        		reservationHTML += '<li class="listItems"> Seating Time ' + data[i].seating_time + ' party size ' + data[i].party_size + '</li>';
+    		}
+	 			$('#reservations').html(reservationHTML);
+	 	}
+	 	var data = $.getJSON(reservationsURL)
+	 	$(".showReservations").on('mouseenter', function() {
+	 		$.getJSON(
+	 			reservationsURL, format, displayReservations
+	 		)
+	 	});
+	 });
+</script>

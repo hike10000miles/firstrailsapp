@@ -2,6 +2,7 @@ class Restaurant < ActiveRecord::Base
 
 	belongs_to :cuisine_type
 	has_many :reservations
+	has_many :comments
 	mount_uploader :image, ImageUploader
 
 	validates :name, length: {in: 1..70}

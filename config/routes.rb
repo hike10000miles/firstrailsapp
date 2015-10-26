@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :user_friendships, only: [:create, :index, :show, :destroy]
   
   get '/user_friendships/:user_friendship_id/sent' => 'messages#index', as: :messages_sent, controller: 'messages'
-  get '/user_friendships/:user_friendship_id/inbox' => 'messages#inbox', as: :messages_inbox, controller: 'messages'
+  get '/inbox' => 'messages#inbox', as: :messages_inbox, controller: 'messages'
   get '/user_friendships/:user_friendship_id/message/new' => 'messages#new', as: :messages_new, controller: 'messages'
   post '/user_friendships/:user_friendship_id/messgae' => 'messages#create', as: :messages, controller: 'messages'
 
@@ -16,8 +16,13 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy', as: :logout
   #resources :sessions, only: [:new, :create, :destroy]
   resources :cuisine_types, only: [:index, :show]
+
   resources :restaurants do
     resources :reservations
+  end
+
+  resources :restaurants do
+    resources :comments, only: [:create, :new]
   end
   
   root 'cuisine_types#index'

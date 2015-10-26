@@ -1,0 +1,28 @@
+<div class="col-md-4 single_reservation">
+	<p>
+	Party Size: <%= @reservation.party_size %>
+</p>
+<p>
+	Seating time: <%= @reservation.seating_time.asctime %>
+</p>
+<% if @reservation.seating_time <= Time.now %>
+	<p>
+		This is an expired reservation.
+	</p>
+<% else %>
+	<p>
+		This is a future reservation.
+	</p>
+<% end %>
+<button type="button" class="btn btn-primary">
+	<%= link_to 'Show', restaurant_reservation_path(@restaurant.id, @reservation.id) %>
+</button>
+<button type="button" class="btn btn-primary">
+		<%= link_to 'Edit', edit_restaurant_reservation_path(@restaurant.id, @reservation.id) %>
+	</button>
+	<button type="button" class="btn btn-primary">
+		<%= link_to 'Destroy', restaurant_reservation_path(@restaurant.id, @reservation.id),
+      method: :delete,
+      data: { confirm: 'Are you sure?' } %>
+</button>
+  </div>

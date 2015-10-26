@@ -10,6 +10,9 @@
 	<p class="navbar">
 		<% if current_user %>
 		  <button type="button" class="btn btn-info">
+			<%= link_to "Inbox", messages_inbox_path %>
+		  </button>
+		  <button type="button" class="btn btn-info">
 			<%= link_to "Main page", cuisine_types_path %>
 		  </button>
 		  <button type="button" class="btn btn-info">

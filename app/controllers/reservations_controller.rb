@@ -6,6 +6,10 @@ class ReservationsController < ApplicationController
 		@current_user = User.find_by_id(session[:user_id])
 		@restaurant = Restaurant.find(params[:restaurant_id])
 		@reservations = @restaurant.reservations.where(user_id: session[:user_id])
+		respond_to do |format|
+			format.html
+			format.json { render json:@reservations }
+		end
 	end
 
 	def new
@@ -20,9 +24,12 @@ class ReservationsController < ApplicationController
 		@reservation.restaurant = @restaurant
 		@reservation.user = @current_user
 		if  @reservation.save
-			redirect_to [@restaurant, @reservation]
+			respond_to do |format|
+		  	  format.html {redirect_to [@restaurant, @reservation]}
+		  	  format.js
+		  	end
 		else
-			render 'new'
+			  render 'new'
 		end
 	end
 
@@ -41,7 +48,10 @@ class ReservationsController < ApplicationController
 		@reservation = @restaurant.reservations.find(params[:id])
 
 		if @reservation.update(reservation_params)
-			redirect_to @restaurant
+			respond_to do |format|
+		  	  format.html {redirect_to @restaurant}
+		  	  format.js
+			end
 		else
 			render 'edit'
 		end

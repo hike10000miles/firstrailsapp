@@ -4,11 +4,19 @@ class RestaurantsController < ApplicationController
 
 	def index
 		@restaurants = Restaurant.all
+		respond_to do |format|
+			format.html
+			format.json { render json:@restaurants }
+		end
 	end
 
 	def show
 		@restaurant = Restaurant.find(params[:id])
 		@current_user = User.find_by_id(session[:user_id])
+		respond_to do |format|
+			format.html
+			format.json { render json:@restaurant }
+		end
 	end
 
 	def new

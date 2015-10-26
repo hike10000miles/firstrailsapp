@@ -1,0 +1,49 @@
+  <% if @restaurant.errors.any? %>
+    <div id="error_explanation_restaurant_reservation">
+      <h2>
+        <%= pluralize(@restaurant.errors.count, "error") %> prohibited
+        this restaurant from being saved:
+      </h2>
+      <ul>
+        <% @restaurant.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div id="restaurant_form">
+<%= form_for [@restaurant] do |f| %>
+	<div class="form-group">
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :address %>
+		<%= f.text_field :address %>
+	</div>
+
+    <div class="form-group">
+		<%= f.label :capacity %>
+		<%= f.text_field :capacity %>
+	</div>
+
+    <div class="form-group">
+		<%= f.label :image %>
+		<%= f.file_field :image %>
+	</div>
+
+	<div class="form-group">
+	    <%= f.label :cuisine_type %>
+		<%= f.select(:cuisine_type_id) do %>
+        	<% [['BBQ', 1], ['Thai', 2], ['Canadian', 3], ['Chinese', 4], ['Japanese', 5], ['Italian', 6], ['French', 7], ['Mexican', 8], ['German', 9]].each do |c| -%>
+                <%= content_tag(:option, c.first, value: c.last) %>
+            <% end %>
+        <% end %>
+	</div>
+
+    <div class="form-group">
+		<%= f.submit %>
+	</div>
+<% end %>

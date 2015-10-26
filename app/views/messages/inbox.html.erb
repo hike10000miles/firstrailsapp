@@ -1,10 +1,17 @@
-<h1>Message from this friend:</h1>
-<% @conter_friendships.each do |friendship| %>
-  <% if @user_friendship.friend_id == friendship.user_id %>
-	<% friendship.messages.each do |message| %>
-	  <p>From: <%= message.user.email %></p>
-	  <p>Title: <%= message.title%></p>
-	  <p>Content: <%= message.content %></p>
-	<% end %>
+<div class="row background">
+<% @conter_friendships.each do |f|%>
+  <% f.messages.each do |m| %>
+    <div class="col-md-4">
+		<p>
+      	<%= m.user.email %>
+    	</p>
+    	<p>
+      	<%= m.title %>
+		</p>
+		<p>
+      	<%= m.content %>
+    	</p>
+    </div>
   <% end %>
 <% end %>
+</div>

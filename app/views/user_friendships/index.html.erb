@@ -24,9 +24,6 @@
 			<%= link_to "Look at sent messages", messages_sent_path(@user_friendships.where(friend_id: friend.id)[0].id) %><br>
 		</button>
 		<button type="button" class="btn btn-info">
-			<%= link_to "Look at recieved messages", messages_inbox_path(@user_friendships.where(friend_id: friend.id)[0].id) %><br>
-		</button>
-		<button type="button" class="btn btn-info">
 			<%= link_to "Write new messages", messages_new_path(@user_friendships.where(friend_id: friend.id)[0].id) %>
 		</button>
 	</div>

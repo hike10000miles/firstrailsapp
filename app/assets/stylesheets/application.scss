@@ -185,3 +185,12 @@ body {
 		list-style: none;
 	}
 }
+.list {
+	list-style: none;
+	.listItems {
+		padding-top: 5px;
+	}
+}
+#user_comment {
+	clear: both;
+}

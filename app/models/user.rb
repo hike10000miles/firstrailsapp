@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 	has_many :user_friendships
 	has_many :friends, :through => :user_friendships
 	has_many :messages
+	has_many :comments
 
 	validates :email, uniqueness: true
 end
